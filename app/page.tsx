@@ -31,7 +31,7 @@ export default function Page() {
   return (
     <main>
       <Box justifyContent="left" minHeight="100vh" pl={15} pt={10}>
-        <Image priority src={icon} width={800} alt="ImgStudio" />
+        <Image priority src={icon} width={800} alt="Meet Experience" />
         <Box sx={{ pl: 2 }}>
           <GoogleSignInButton onClick={handleClick} />
         </Box>

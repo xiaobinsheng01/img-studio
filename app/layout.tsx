@@ -21,7 +21,7 @@ import { ContextProvider } from './context/app-context'
 import './globals.css'
 
 export const metadata = {
-  title: 'ImgStudio',
+  title: 'Meet Experience',
   description: 'Interface to generate & edit images using Google model Imagen',
 }
 

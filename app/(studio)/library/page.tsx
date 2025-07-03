@@ -87,7 +87,7 @@ export default function Page() {
 
           if (hasOldFormat) {
             setErrorMsg(
-              "Attention: To ensure compatibility with the new Veo features in ImgStudio, the Firestore metadata database must be updated. Please have your system administrator execute the instructions provided in library-update-script.md, located in the app's code repository."
+              "Attention: To ensure compatibility with the new Veo features in Meet Experience, the Firestore metadata database must be updated. Please have your system administrator execute the instructions provided in library-update-script.md, located in the app's code repository."
             )
             setIsMediasLoading(false)
             setFetchedMediasByPage([])

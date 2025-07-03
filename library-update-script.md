@@ -1,6 +1,6 @@
 # Firestore field renaming script for the Library metadata
 
-The recent incorporation of **Veo** into **ImgStudio** requires a change in the Firestore `metadata` database structure to align with new data models and conventions. Specifically, this script renames various image-related fields to new more generic ones for all media types (images and videos), ensuring your Firestore data is compatible with the updated **ImgStudio** Library feature.
+The recent incorporation of **Veo** into **Meet Experience** requires a change in the Firestore `metadata` database structure to align with new data models and conventions. Specifically, this script renames various image-related fields to new more generic ones for all media types (images and videos), ensuring your Firestore data is compatible with the updated **Meet Experience** Library feature.
 
 This file provides comprehensive instructions on how to execute this script directly from **Cloud Shell** within the Google Cloud console.
 
@@ -8,7 +8,7 @@ This file provides comprehensive instructions on how to execute this script dire
 
 ## Prerequisites
 
-- Go on the Google Cloud project where **ImgStudio** is deployed.
+- Go on the Google Cloud project where **Meet Experience** is deployed.
 - The Google Cloud SDK installed (Cloud Shell comes with it pre-installed).
 - Sufficient IAM permissions, you must have read and write access to the Firestore database (a role for this is `Cloud Datastore User`).
 

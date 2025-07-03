@@ -1,4 +1,4 @@
-# Infrastructure setup guide for ImgStudio
+# Infrastructure setup guide for Meet Experience
 
 ## 0\\ Setup **Vertex** & Request access to **required models**
 

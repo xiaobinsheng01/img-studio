@@ -84,7 +84,7 @@ export default function SideNav() {
             priority
             src={icon}
             width={110}
-            alt="ImgStudio"
+            alt="Meet Experience"
             style={{
               transform: 'rotate(-90deg)',
             }}
@@ -94,7 +94,7 @@ export default function SideNav() {
       {open && (
         <List dense>
           <ListItem onClick={() => setOpen(!open)} sx={{ px: 2.5, pt: 2, cursor: 'pointer' }}>
-            <Image priority src={icon} width={200} alt="ImgStudio" />
+            <Image priority src={icon} width={200} alt="Meet Experience" />
           </ListItem>
 
           {Object.values(pages).map(({ name, description, href, status }) => (
@@ -147,8 +147,8 @@ export default function SideNav() {
             color: palette.secondary.light,
           }}
         >
-          / Made with <span style={{ margin: 1, color: palette.primary.main }}>❤</span> by
-          <a
+          {/* / Made with <span style={{ margin: 1, color: palette.primary.main }}>❤</span> by */}
+          {/* <a
             href="https://www.linkedin.com/in/aduboue/"
             target="_blank"
             rel="noopener noreferrer"
@@ -160,7 +160,7 @@ export default function SideNav() {
             }}
           >
             @Agathe
-          </a>
+          </a> */}
         </Typography>
       )}
       <IconButton
