@@ -30,6 +30,7 @@ import {
   IconButton,
   Stack,
   Typography,
+  MenuItem
 } from '@mui/material'
 import {
   ArrowDownward as ArrowDownwardIcon,
@@ -54,6 +55,7 @@ import CustomTooltip from '../ux-components/Tooltip'
 import GenerateSettings from './GenerateSettings'
 import ImageToPromptModal from './ImageToPromptModal'
 import { ReferenceBox } from './ReferenceBox'
+import { FormInputTextSmall } from '../ux-components/InputTextSmall'
 
 import theme from '../../theme'
 const { palette } = theme
@@ -494,7 +496,7 @@ export default function GenerateForm({
                 </Avatar>
               </IconButton>
             </CustomTooltip>
-            <GenerateSettings
+            {/* <GenerateSettings
               control={control}
               setValue={setValue}
               generalSettingsFields={
@@ -506,13 +508,14 @@ export default function GenerateForm({
                   ? 'NB: for now, Veo 3 has fewer setting options than Veo 2!'
                   : ''
               }
-            />
+            /> */}
+            
             {currentModel === 'veo-3.0-generate-preview' && (
               <CustomTooltip title="Add audio to your video" size="small">
-                <AudioSwitch checked={isVideoWithAudio} onChange={handleVideoAudioCheck} />
+                <AudioSwitch checked={isVideoWithAudio} onChange={handleVideoAudioCheck} sx={{marginTop: '20px'}}/>
               </CustomTooltip>
             )}
-            <CustomTooltip title="Have Gemini enhance your prompt" size="small">
+            <CustomTooltip title="Have Gemini enhance your prompt" size="small" >
               <GeminiSwitch checked={isGeminiRewrite} onChange={handleGeminiRewrite} />
             </CustomTooltip>
             <Button
@@ -655,6 +658,88 @@ export default function GenerateForm({
                 </AccordionDetails>
               </Accordion>
             )}
+
+
+          <div style={{ marginBottom: '20px', border: '1px solid #E8EAED',borderRadius: '5px',paddingBottom: '10px'}}>
+            <Typography
+              color={palette.warning.main}
+              sx={{ m: 1, fontSize: '0.7rem', fontWeight: 400, fontStyle: 'italic', px: 1 }}
+            >
+               { currentModel === 'veo-3.0-generate-preview'
+                ? 'NB: for now, Veo 3 has fewer setting options than Veo 2!'
+                : ''}
+            </Typography>
+            <div style={{ display: 'grid', gridTemplateColumns: 'repeat(4, 1fr)', gap: '10px' }}>
+              {Object.entries(currentModel === 'veo-3.0-generate-preview' ? tempVeo3specificSettings : generationFields.settings).map(function ([param, field]) {
+                return (
+                  <MenuItem key={param}>
+                    <FormInputChipGroup
+                      name={param}
+                      label={field.label}
+                      key={param}
+                      control={control}
+                      setValue={setValue}
+                      width="260px"
+                      field={field}
+                      required={true}
+                    />
+                  </MenuItem>
+                )
+              })}
+
+              {Object.entries(generationFields.advancedSettings).map(function ([param, field]) {
+                return (
+                  <MenuItem key={param}>
+                    <FormInputDropdown
+                      name={param}
+                      label={field.label}
+                      key={param}
+                      control={control}
+                      field={field}
+                      styleSize="small"
+                      width="160px"
+                      required={true}
+                    />
+                  </MenuItem>
+                )
+              })}
+            </div>
+            
+            <MenuItem key={'negativePrompt'}>
+              <Box
+                sx={{
+                  display: 'flex',
+                  flexDirection: 'column',
+                  justifyContent: 'flex-start',
+                  alignContent: 'flex-start',
+                  width: '100%',
+                }}
+              >
+                <Typography
+                  variant="caption"
+                  sx={{
+                    color: palette.text.primary,
+                    fontSize: '0.75rem',
+                    fontWeight: 500,
+                    lineHeight: '1.3em',
+                    pb: 0.5,
+                  }}
+                >
+                  {'Negative prompt (content to avoid)'}
+                </Typography>
+
+                <FormInputTextSmall
+                  rows={2}
+                  name="negativePrompt"
+                  label="negativePrompt"
+                  control={control}
+                  required={false}
+                />
+              </Box>
+            </MenuItem>
+          </div>
+
+
           <Accordion
             disableGutters
             defaultExpanded
@@ -679,7 +764,7 @@ export default function GenerateForm({
                 flexWrap="wrap"
                 justifyContent="flex-start"
                 alignItems="flex-start"
-                sx={{ pt: 1, height: 100 }}
+                sx={{ pt: 1, height: 150 }}
               >
                 <FormInputDropdown
                   name="style"
@@ -695,7 +780,7 @@ export default function GenerateForm({
                   label={subImgStyleField(control).label}
                   control={control}
                   setValue={setValue}
-                  width="400px"
+                  width="800px"
                   field={subImgStyleField(control)}
                   required={false}
                 />
@@ -710,7 +795,7 @@ export default function GenerateForm({
                         key={param}
                         control={control}
                         setValue={setValue}
-                        width="250px"
+                        width="100%"
                         field={field}
                         required={false}
                       />
@@ -722,7 +807,7 @@ export default function GenerateForm({
           </Accordion>
         </Box>
       </form>
-
+      
       <ImageToPromptModal
         open={imageToPromptOpen}
         setNewPrompt={(string) => setValue('prompt', string)}
