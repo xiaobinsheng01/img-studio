@@ -89,9 +89,11 @@ const MaterialUISwitch = styled(Switch)(({ theme }) => ({
 export const AudioSwitch = ({
   checked,
   onChange,
+  sx,
 }: {
   checked: boolean
   onChange: (event: React.ChangeEvent<HTMLInputElement>) => void
+  sx?: any
 }) => {
-  return <MaterialUISwitch sx={{ mt: 2 }} checked={checked} onChange={onChange} />
+  return <MaterialUISwitch sx={{ mt: 2, ...sx }} checked={checked} onChange={onChange} />
 }

@@ -131,7 +131,7 @@ async function generatePrompt(formData: any, isGeminiRewrite: boolean, reference
 
   // Add references to the prompt
   if (references !== undefined && references.length > 0) {
-    let reference = 'Generate an image '
+    let reference = 'Image '
     let subjects: string[] = []
     let subjectsID: number[] = []
     let styles: string[] = []

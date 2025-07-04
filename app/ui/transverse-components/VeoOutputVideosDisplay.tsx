@@ -101,7 +101,7 @@ export default function OutputVideosDisplay({
         sx={{
           height: '79vh',
           maxHeight: 550,
-          width: generatedVideosInGCS[0] ? (generatedVideosInGCS[0].ratio === '16:9' ? '90%' : '70%') : '90%',
+          width: generatedVideosInGCS[0] ? (generatedVideosInGCS[0].ratio === '16:9' ? '100%' : '70%') : '100%',
         }}
       >
         {isLoading ? (

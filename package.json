@@ -1,8 +1,8 @@
 {
   "private": true,
   "scripts": {
-    "build": "next build",
-    "dev": "next dev",
+    "build": "cross-env NEXT_PUBLIC_HEADER_EMAIL=genai-marketing-run@gcp-genai-for-marketing-demo.iam.gserviceaccount.com next build",
+    "dev": "cross-env NEXT_PUBLIC_HEADER_EMAIL=genai-marketing-run@gcp-genai-for-marketing-demo.iam.gserviceaccount.com next dev",
     "start": "next start",
     "generate-third-party": "node generate-third-party.js"
   },
@@ -47,6 +47,7 @@
     "@types/react": "^18.3.3",
     "@types/react-dom": "18.3.0",
     "@types/react-window": "^1.8.8",
+    "cross-env": "^7.0.3",
     "html-loader": "^5.1.0",
     "install": "^0.13.0",
     "next": "^14.2.16",

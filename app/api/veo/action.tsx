@@ -459,7 +459,7 @@ export async function getVideoGenerationStatus(
     },
     headers: {
       'Content-Type': 'application/json',
-      'X-Goog-Authenticated-User-Email':'genai-marketing-run@gcp-genai-for-marketing-demo.iam.gserviceaccount.com'
+      'X-Goog-Authenticated-User-Email': process.env.NEXT_PUBLIC_HEADER_EMAIL
     },
   }
 

@@ -23,7 +23,7 @@ import { imageGenerationUtils, ImageI, ImageRandomPrompts } from '../../api/gene
 import OutputImagesDisplay from '../../ui/transverse-components/ImagenOutputImagesDisplay'
 import { appContextDataDefault, useAppContext } from '../../context/app-context'
 import { Typography } from '@mui/material'
-
+import logo from '../../../public/logo.png'
 import theme from '../../theme'
 const { palette } = theme
 import {
@@ -48,7 +48,7 @@ const MAX_POLLING_ATTEMPTS = 30 // Max 30 attempts
 const JITTER_FACTOR = 0.2 // Add up to 20% jitter
 
 export default function Page() {
-  const [generationMode, setGenerationMode] = useState('Generate an Image')
+  const [generationMode, setGenerationMode] = useState('Image')
 
   const [isLoading, setIsLoading] = useState(false)
 
@@ -63,7 +63,7 @@ export default function Page() {
   const [initialPrompt, setInitialPrompt] = useState<string | null>(null)
   useEffect(() => {
     if (appContext && appContext.promptToGenerateImage) {
-      setGenerationMode('Generate an Image')
+      setGenerationMode('Image')
       setInitialPrompt(appContext.promptToGenerateImage)
       // Re-initialize parameter in context
       setAppContext((prevContext) => {
@@ -72,7 +72,7 @@ export default function Page() {
       })
     }
     if (appContext && appContext.promptToGenerateVideo) {
-      setGenerationMode('Generate a Video')
+      setGenerationMode('Video')
       setInitialPrompt(appContext.promptToGenerateVideo)
       // Re-initialize parameter in context
       setAppContext((prevContext) => {
@@ -87,7 +87,7 @@ export default function Page() {
   useEffect(() => {
     const fetchAndSetImage = async () => {
       if (appContext && appContext.imageToVideo) {
-        setGenerationMode('Generate a Video')
+        setGenerationMode('Video')
         try {
           const { data } = await downloadMediaFromGcs(appContext.imageToVideo)
           const newImage = `data:image/png;base64,${data}`
@@ -155,7 +155,7 @@ export default function Page() {
       setOperationMetadata(null)
       setIsLoading(false)
 
-      if (clickedValue === 'Generate an Image') setInitialITVimage(null)
+      if (clickedValue === 'Image') setInitialITVimage(null)
     }
   }
 
@@ -335,7 +335,7 @@ export default function Page() {
           sx={{ fontWeight: 400, color: appContextError === null ? palette.primary.main : palette.error.main }}
         >
           {appContextError === null
-            ? 'Loading your profile content...'
+            ? 'Loading...'
             : 'Error while loading your profile content! Retry or contact you IT admin.'}
         </Typography>
       </Box>
@@ -343,13 +343,14 @@ export default function Page() {
   }
 
   return (
-    <Box p={5} sx={{ maxHeight: '100vh' }}>
-      <Grid wrap="nowrap" container spacing={6} direction="row" columns={2}>
-        <Grid size={1.1} flex={0} sx={{ maxWidth: 700, minWidth: 610 }}>
+    <Box p={5} sx={{ maxHeight: '100vh' }} className="chip-group-class">
+      <img src={logo.src} alt="logo" style={{ marginBottom: '20px' }} />
+      <Grid wrap="nowrap" container spacing={6} direction="column" columns={2}>
+        <Grid size={1} flex={0} sx={{ width: "80vw", minWidth: 1000 }}>
           <ChipGroup
             width={'100%'}
             required={false}
-            options={['Generate an Image', 'Generate a Video']}
+            options={['Image', 'Video']}
             value={generationMode}
             disabled={isLoading || process.env.NEXT_PUBLIC_VEO_ENABLED !== 'true'}
             onChange={generationModeSwitch}
@@ -357,7 +358,7 @@ export default function Page() {
             weight={500}
           />
 
-          {generationMode === 'Generate an Image' && (
+          {generationMode === 'Image' && (
             <GenerateForm
               key="image-form"
               generationType="Image"
@@ -375,7 +376,7 @@ export default function Page() {
             />
           )}
 
-          {process.env.NEXT_PUBLIC_VEO_ENABLED === 'true' && generationMode === 'Generate a Video' && (
+          {process.env.NEXT_PUBLIC_VEO_ENABLED === 'true' && generationMode === 'Video' && (
             <GenerateForm
               key="video-form"
               generationType="Video"
@@ -394,8 +395,8 @@ export default function Page() {
             />
           )}
         </Grid>
-        <Grid size={0.9} flex={1} sx={{ pt: 14, maxWidth: 850, minWidth: 400 }}>
-          {generationMode === 'Generate an Image' ? (
+        <Grid size={1} flex={1} sx={{ width: "100vw", maxWidth: 1000, minWidth: 800 }}>
+          {generationMode === 'Image' ? (
             <OutputImagesDisplay
               isLoading={isLoading}
               generatedImagesInGCS={generatedImages}

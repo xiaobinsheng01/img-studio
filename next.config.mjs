@@ -17,6 +17,9 @@
 const nextConfig = {
   reactStrictMode: false,
   staticPageGenerationTimeout: 500,
+  env: {
+    NEXT_PUBLIC_HEADER_EMAIL: process.env.NEXT_PUBLIC_HEADER_EMAIL
+  },
   images: {
     remotePatterns: [
       {

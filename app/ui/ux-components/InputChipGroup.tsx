@@ -87,9 +87,9 @@ export const ChipGroup = ({
           variant="caption"
           sx={{
             color: palette.text.primary,
-            fontSize: '0.75rem',
+            fontSize: '1.2rem',
             fontWeight: 500,
-            lineHeight: '1.3em',
+            lineHeight: '2.5em',
             pb: 0.5,
           }}
         >
