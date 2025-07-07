@@ -99,6 +99,7 @@ export default function FormInputDropdown({
   label,
   field,
   required,
+  variant,
 }: FormDropdownInputI) {
   const [selectedItem, setSelectedItem] = useState(String)
   const [itemIndication, setItemIndication] = useState(String)
@@ -117,8 +118,8 @@ export default function FormInputDropdown({
               onChange={onChange}
               value={value == null ? field.default : value}
               select
-              variant="standard"
               size="small"
+              variant={value == null ? 'standard' : variant}
               defaultValue={field.default}
               label={label == null ? '' : label}
               InputLabelProps={{

@@ -404,20 +404,22 @@ export default function GenerateForm({
   return (
     <>
       <form onSubmit={handleSubmit(onSubmit)}>
+        <div style={{ height: '30px' }}></div>
         <Box sx={{ pb: 4 }}>
           <Box sx={{ pb: 5 }}>
             <Stack direction="row" spacing={2} justifyContent="flex-start" alignItems="center">
-              <Typography variant="h1" color={palette.text.secondary} sx={{ fontSize: '1.8rem' }}>
+              {/* <Typography variant="h1" color={palette.text.secondary} sx={{ fontSize: '1.8rem' }}>
                 {'Generate with'}
-              </Typography>
+              </Typography> */}
               <FormInputDropdown
                 name="modelVersion"
-                label=""
+                label="Generate with"
                 control={control}
                 field={modelOptionField}
                 styleSize="big"
-                width=""
+                width="400px"
                 required={false}
+                variant="filled"
               />
             </Stack>
           </Box>
@@ -699,6 +701,7 @@ export default function GenerateForm({
                       styleSize="small"
                       width="160px"
                       required={true}
+                      variant="standard"
                     />
                   </MenuItem>
                 )
@@ -772,8 +775,9 @@ export default function GenerateForm({
                   control={control}
                   field={generationFields.styleOptions}
                   styleSize="small"
-                  width="140px"
+                  width="240px"
                   required={true}
+                  variant="standard"
                 />
                 <FormInputChipGroup
                   name="secondary_style"

@@ -228,6 +228,7 @@ export default function EditForm({
               styleSize="big"
               width=""
               required={false}
+              variant="standard"
             />
           </Stack>
         </Box>

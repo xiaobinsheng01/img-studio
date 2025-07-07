@@ -32,6 +32,7 @@ export interface FormDropdownInputI {
   setValue?: any
   field: selectFieldsI
   required: boolean
+  variant: 'standard' | 'filled'
 }
 
 export interface FormChipGroupInputI {

@@ -131,6 +131,7 @@ export default function FormInputEditSettings({
             styleSize="small"
             width="160px"
             required={true}
+            variant="standard"
           />
         </MenuItem>
 
@@ -144,6 +145,7 @@ export default function FormInputEditSettings({
             styleSize="small"
             width="160px"
             required={true}
+            variant="standard"
           />
         </MenuItem>
 
