@@ -637,6 +637,8 @@ export async function editImage(formData: EditImageFormI, appContext: appContext
     data: reqData,
   }
 
+  console.log("Request Data:", JSON.stringify(reqData, null, 2));
+
   // 3 - Editing image
   let res
   try {
